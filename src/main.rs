@@ -4,10 +4,10 @@ use clap::Parser;
 
 #[derive(Parser)]
 pub struct Cli {
-    /// Input file
+    /// Path to input file
     #[arg(value_name="INPUT FILE")]
     input:  PathBuf,
-    /// Output file
+    /// (Optional) Path to output file (default: stdout)
     #[arg(value_name="OUTPUT FILE")]
     output: Option<PathBuf>,
 }
@@ -160,17 +160,10 @@ mod tests {
         //       00000000001111111111222222222233333333334444444444
         //       01234567890123456789012345678901234567890123456789
         let x = ",hello,there, how, five, six, seven,hi".find_nth(7, ',').unwrap();
-        println!("HEEEEEEEEEEEEEEEEEEEEEEEE {x}");
         assert_eq!(
             x,
             35
         );
-    }
-
-    #[test]
-    fn test_get_times(){
-        println!("{:?}",get_times("time1,time2,time3"));
-        
     }
 
     #[test]
